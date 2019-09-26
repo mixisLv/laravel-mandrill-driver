@@ -6,7 +6,19 @@ This package re-enables Mandrill driver functionality using the Mail facade in L
 
 To install the package in your project, you need to require the package via composer:
 
+```sh
 composer require mixisLv/laravel-mandrill-driver
+```
+
+## Configure
+
+To use the Mandrill driver, set the `MAIL_DRIVER` environment variable to "mandrill". Next, update the `config/services.php` configuration file to include the following options:
+
+```php
+'mandrill' => [
+    'secret' => env('MANDRILL_SECRET'),
+],
+```
 
 ## Changelog
 

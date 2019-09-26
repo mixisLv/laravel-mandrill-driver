@@ -56,11 +56,9 @@ class MandrillTransport extends Transport
             ],
         ]);
 
-        // Lets check Mandrill response
-        $mandrillResponse = json_decode($response->getBody()->getContents());
-        if(isset($mandrillResponse, $mandrillResponse[0])) {
-            $message->getHeaders()->addTextHeader('mandrill-response', json_encode($mandrillResponse[0]));
-        }
+        $message->getHeaders()->addTextHeader(
+            'X-Mandrill-Response', trim($response->getBody()->getContents(), '[]')
+        );
 
         $this->sendPerformed($message);
 
