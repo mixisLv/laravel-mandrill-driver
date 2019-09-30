@@ -57,7 +57,7 @@ class MandrillTransport extends Transport
         ]);
 
         $message->getHeaders()->addTextHeader(
-            'X-Mandrill-Response', trim($response->getBody()->getContents(), '[]')
+            'X-MC-Response', trim($response->getBody()->getContents(), '[]')
         );
 
         $this->sendPerformed($message);
