@@ -1,13 +1,14 @@
 {
     "name": "mixislv/laravel-mandrill-driver",
-    "description": "Laravel 6.x Mandrill Driver & Webhook handler",
+    "description": "Laravel 6.x Mandrill Driver & Webhooks handler",
     "homepage": "https://github.com/mixisLv/laravel-mandrill-driver",
     "keywords":
     [
         "laravel",
         "mandrill",
         "mail",
-        "driver"
+        "driver",
+        "webhooks"
     ],
     "type": "library",
     "authors": [
