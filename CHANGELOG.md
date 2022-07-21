@@ -2,6 +2,10 @@
 
 All notable changes to `mixislv/laravel-mandrill-driver` will be documented in this file
 
+
+## 1.2.0 - 2022-07-21
+- Added support for PHP 8
+
 ## 1.1.0 - 2019-11-01
 - Set minimum Laravel version to 6.0
 - Added Mandrill webhook's support
