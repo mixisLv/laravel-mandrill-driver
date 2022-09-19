@@ -1,8 +1,7 @@
-### PhpStorm ###
-.idea/
-
-### Composer ###
+/vendor
+composer.phar
 composer.lock
-/vendor/
-
-
+.DS_Store
+Thumbs.db
+phpunit.xml
+.idea

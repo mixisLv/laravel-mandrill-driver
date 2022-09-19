@@ -2,6 +2,10 @@
 
 All notable changes to `mixislv/laravel-mandrill-driver` will be documented in this file
 
+## 2.0.0 - 2022-09-19
+- Added support for Laravel 9
+- Dropped support for Laravel 6/7/8
+
 ## 1.3.0 - 2022-09-02
 - Added support for Laravel 7/8 
 

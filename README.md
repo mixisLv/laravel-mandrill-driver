@@ -1,6 +1,6 @@
-# Laravel Mandrill driver
+# Laravel 9+ Mandrill Driver & Webhooks handler
 
-This package re-enables Mandrill driver functionality using the Mail facade in Laravel 6+.
+This package re-enables Mandrill driver functionality using the Mail facade in Laravel 9+.
 
 ## Install
 
@@ -12,19 +12,45 @@ composer require mixisLv/laravel-mandrill-driver
 
 ## Configure
 
-To use the Mandrill driver, set the `MAIL_DRIVER` environment variable to "mandrill". Next, update the `config/services.php` configuration file to include the following options:
+To use the Mandrill driver, set the `MAIL_MAILER` environment variable to "mandrill". Next, update the `config/services.php` configuration file to include the following options:
 
 ```php
 'mandrill' => [
     'secret' => env('MANDRILL_SECRET'),
 ],
 ```
-
 ## Usage
 
 ### Send e-mail
+
+https://laravel.com/docs/9.x/mail#generating-mailables
+
+You can also add custom Mandrill headers to each email sent. https://laravel.com/docs/9.x/mail#customizing-the-symfony-message
 ```php
 // @todo
+
+use Symfony\Component\Mime\Email;
+ 
+/**
+ * Build the message.
+ *
+ * @return $this
+ */
+public function build()
+{
+    $this->view('emails.example');
+ 
+    $this->withSymfonyMessage(function (Email $message) {
+        $message->getHeaders()->addTextHeader(
+            'Custom-Mailchimp-Header', 'Header Value' // @see https://mailchimp.com/developer/transactional/docs/smtp-integration/#customize-messages-with-smtp-headers
+
+        );
+    });
+ 
+    return $this;
+}
+
+
 ```
 ### Listening response
 ```php

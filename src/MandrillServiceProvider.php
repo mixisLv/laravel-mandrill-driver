@@ -2,18 +2,29 @@
 
 namespace mixisLv\LaravelMandrillDriver;
 
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\ServiceProvider;
+
+use Symfony\Component\Mailer\Bridge\Mailchimp\Transport\MandrillTransportFactory;
+use Symfony\Component\Mailer\Transport\Dsn;
 
 class MandrillServiceProvider extends ServiceProvider
 {
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
     public function boot()
     {
-        if ($this->app['config']['mail.driver'] == 'mandrill') {
-            $this->app['swift.transport']->extend('mandrill', function () {
-                $config = array_merge(['secret' => ''], $this->app['config']->get('services.mandrill', []));
-
-                return new MandrillTransport(new \GuzzleHttp\Client($config), $config['secret']);
-            });
-        }
+        Mail::extend('mandrill', function () {
+            return (new MandrillTransportFactory)->create(
+                new Dsn(
+                    'mandrill+api',
+                    'default',
+                    config('services.mandrill.secret')
+                )
+            );
+        });
     }
 }
