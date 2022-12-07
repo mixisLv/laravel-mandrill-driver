@@ -61,7 +61,7 @@ class MandrillWebhookController extends Controller
      */
     private function validateSignature(Request $request)
     {
-        $webhookKey = config('services.mandrill.secret');
+        $webhookKey = config('services.mandrill.webhook-key', config('services.mandrill.secret'));
 
         if (!empty($webhookKey)) {
             $signature = $this->generateSignature($webhookKey, $request->url(), $request->all());
