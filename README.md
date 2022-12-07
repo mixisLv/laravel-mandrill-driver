@@ -17,6 +17,7 @@ To use the Mandrill driver, set the `MAIL_MAILER` environment variable to "mandr
 ```php
 'mandrill' => [
     'secret' => env('MANDRILL_SECRET'),
+    'webhook-key' => env('MANDRILL_WEBHOOK_KEY'),
 ],
 ```
 ## Usage
